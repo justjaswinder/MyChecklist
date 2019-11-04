@@ -9,10 +9,46 @@
 import UIKit
 
 class ChecklistViewController: UITableViewController,clickPerformCell {
-  
+    
+    var items: [CheckListItem]
+    
+    //    var row0item: CheckListItem
+    //    var row1item: CheckListItem
+    //    var row2item: CheckListItem
+    //    var row3item: CheckListItem
+    //    var row4item: CheckListItem
     
     
-    var arr : [String] = ["Apple","Mango","Banana","Papaya", "Guava", "Fig", "Avocado", "Cherry", "Blueberry" , "Blackberry", "Date","Peach", "Orange"]
+    
+    required init?(coder aDecoder: NSCoder) {
+        
+        items = [CheckListItem]()
+        
+        let   row0item = CheckListItem()
+        row0item.text = "Apple"
+        row0item.checked = false
+        items.append(row0item)
+        let    row1item = CheckListItem()
+        row1item.text = "Mango"
+        row1item.checked = true
+        items.append(row1item)
+        let  row2item = CheckListItem()
+        row2item.text = "Papaya"
+        row2item.checked = true
+        items.append(row2item)
+        let  row3item = CheckListItem()
+        row3item.text = "Blueberry"
+        row3item.checked = false
+        items.append(row3item)
+        let   row4item = CheckListItem()
+        row4item.text = "Guava"
+        row4item.checked = true
+        items.append(row4item)
+        
+        super.init(coder: aDecoder)
+    }
+    
+    //   var arr : [String] = ["Apple","Mango","Banana","Papaya", "Guava", "Fig", "Avocado", "Cherry", "Blueberry" , "Blackberry", "Date","Peach", "Orange"]
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -20,11 +56,9 @@ class ChecklistViewController: UITableViewController,clickPerformCell {
     
     override func tableView(_ tableView: UITableView,
                             numberOfRowsInSection section: Int) -> Int {
-        return arr.count
+        return items.count
         
     }
-    
-    
     
     override func tableView(_ tableView: UITableView,
                             cellForRowAt indexPath: IndexPath) ->
@@ -33,63 +67,85 @@ class ChecklistViewController: UITableViewController,clickPerformCell {
                 withIdentifier: "ChecklistItem", for: indexPath) as! checklistCell
             
             cell.delegateClickPerform = self
-         
-//            let label = cell.viewWithTag(1000) as! UILabel
-            cell.textLabel!.text = arr[indexPath.row]
-//            if indexPath.row == 0 {
-//                cell.textLabel!.text = "Walk the dog"
-//            } else if indexPath.row == 1 {
-//                cell.textLabel!.text  = "Brush my teeth"
-//            } else if indexPath.row == 2 {
-//                cell.textLabel!.text  = "Learn iOS development"
-//            } else if indexPath.row == 3 {
-//                cell.textLabel!.text = "Soccer practice"
-//            } else if indexPath.row == 4 {
-//                cell.textLabel!.text  = "Eat ice cream"
-//            }
-            // End of new code block
+            
+            //            let label = cell.viewWithTag(1000) as! UILabel
+            
+            //            if indexPath.row == 0 {
+            //                cell.textLabel!.text = "Walk the dog"
+            //            } else if indexPath.row == 1 {
+            //                cell.textLabel!.text  = "Brush my teeth"
+            //            } else if indexPath.row == 2 {
+            //                cell.textLabel!.text  = "Learn iOS development"
+            //            } else if indexPath.row == 3 {
+            //                cell.textLabel!.text = "Soccer practice"
+            //            } else if indexPath.row == 4 {
+            //                cell.textLabel!.text  = "Eat ice cream"
+            //            }
+            
+            let item = items[indexPath.row]
+            cell.textLabel!.text = items[indexPath.row].text
+            //   configureText(for: cell, with: item)
+            configureCheckmark(for: cell, with: item)
             return cell
             
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    
+        
         print("index =\(indexPath.row) ")
-        let alert = UIAlertController(title: "Clicked Fruit Name", message: arr[indexPath.row], preferredStyle: .alert)
+        let alert = UIAlertController(title: "Clicked Fruit Name", message: items[indexPath.row].text, preferredStyle: .alert)
         
         let action = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(action)
         self.present(alert, animated: true)
-//        if let cell = tableView.cellForRow(at: indexPath){
-//            cell.accessoryType = .checkmark
-//        }
-
+        //        if let cell = tableView.cellForRow(at: indexPath){
+        //            cell.accessoryType = .checkmark
+        //        }
+        
+        //        if let cell = tableView.cellForRow(at: indexPath) {
+        //            if cell.accessoryType == .none {
+        //                cell.accessoryType = .checkmark
+        //            } else {
+        //                cell.accessoryType = .none
+        //            }
+        //        }
+        //        tableView.deselectRow(at: indexPath, animated: true)
+        
         if let cell = tableView.cellForRow(at: indexPath) {
-            if cell.accessoryType == .none {
-                cell.accessoryType = .checkmark
-            } else {
-                cell.accessoryType = .none
-            }
+            let item = items[indexPath.row]
+            item.toggleChecked()
+            configureCheckmark(for: cell, with: item)
         }
-       tableView.deselectRow(at: indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
-//    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-//
-//        if let cell = tableView.cellForRow(at: indexPath){
-//            cell.accessoryType = .none
-//        }
-//    }
+    //    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    //
+    //        if let cell = tableView.cellForRow(at: indexPath){
+    //            cell.accessoryType = .none
+    //        }
+    //    }
+    
+    func configureCheckmark(for cell: UITableViewCell,
+                            with item: CheckListItem) {
+        if item.checked {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
+    }
+    
+    
     
     func btn(cell: checklistCell) {
-      
         
-         if let cell = tableView.indexPath(for: cell) {
-            let alert = UIAlertController(title: "WELCOME", message: arr[cell.row], preferredStyle: .actionSheet)
+        
+        if let cell = tableView.indexPath(for: cell) {
+            let alert = UIAlertController(title: "WELCOME", message: items[cell.row].text, preferredStyle: .actionSheet)
             
             let action = UIAlertAction(title: "OK", style: .default, handler: nil)
             alert.addAction(action)
             self.present(alert, animated: true)
-        
+            
         }
         
     }

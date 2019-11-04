@@ -12,6 +12,7 @@
 		9BF07890236C621D004B9645 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BF0788E236C621D004B9645 /* Main.storyboard */; };
 		9BF07892236C621E004B9645 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BF07891236C621E004B9645 /* Assets.xcassets */; };
 		9BF07895236C621E004B9645 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BF07893236C621E004B9645 /* LaunchScreen.storyboard */; };
+		9BFBAC3323707E3D0017B4D6 /* CheckListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFBAC3223707E3D0017B4D6 /* CheckListItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		9BF07891236C621E004B9645 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9BF07894236C621E004B9645 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9BF07896236C621E004B9645 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9BFBAC3223707E3D0017B4D6 /* CheckListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				9BF07891236C621E004B9645 /* Assets.xcassets */,
 				9BF07893236C621E004B9645 /* LaunchScreen.storyboard */,
 				9BF07896236C621E004B9645 /* Info.plist */,
+				9BFBAC3223707E3D0017B4D6 /* CheckListItem.swift */,
 			);
 			path = MyChecklist;
 			sourceTree = "<group>";
@@ -135,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BFBAC3323707E3D0017B4D6 /* CheckListItem.swift in Sources */,
 				9BF0788D236C621D004B9645 /* ChecklistViewController.swift in Sources */,
 				9BF0788B236C621D004B9645 /* AppDelegate.swift in Sources */,
 			);
