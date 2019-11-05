@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9BACA7512371C0380008C179 /* AddNewItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BACA7502371C0380008C179 /* AddNewItemController.swift */; };
 		9BF0788B236C621D004B9645 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF0788A236C621D004B9645 /* AppDelegate.swift */; };
 		9BF0788D236C621D004B9645 /* ChecklistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF0788C236C621D004B9645 /* ChecklistViewController.swift */; };
 		9BF07890236C621D004B9645 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BF0788E236C621D004B9645 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9BACA7502371C0380008C179 /* AddNewItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewItemController.swift; sourceTree = "<group>"; };
 		9BF07887236C621D004B9645 /* MyChecklist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyChecklist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BF0788A236C621D004B9645 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9BF0788C236C621D004B9645 /* ChecklistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				9BF07893236C621E004B9645 /* LaunchScreen.storyboard */,
 				9BF07896236C621E004B9645 /* Info.plist */,
 				9BFBAC3223707E3D0017B4D6 /* CheckListItem.swift */,
+				9BACA7502371C0380008C179 /* AddNewItemController.swift */,
 			);
 			path = MyChecklist;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 				9BFBAC3323707E3D0017B4D6 /* CheckListItem.swift in Sources */,
 				9BF0788D236C621D004B9645 /* ChecklistViewController.swift in Sources */,
 				9BF0788B236C621D004B9645 /* AppDelegate.swift in Sources */,
+				9BACA7512371C0380008C179 /* AddNewItemController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

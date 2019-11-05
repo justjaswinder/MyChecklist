@@ -10,6 +10,19 @@ import UIKit
 
 class ChecklistViewController: UITableViewController,clickPerformCell {
     
+    @IBAction func addClick(_ sender: Any) {
+        
+        let newRowIndex = items.count
+         let item = CheckListItem()
+         item.text = "I am a new row"
+         item.checked = false
+         items.append(item)
+
+         let indexPath = IndexPath(row: newRowIndex, section: 0)
+         let indexPaths = [indexPath]
+         tableView.insertRows(at: indexPaths, with: .automatic)
+    }
+    
     var items: [CheckListItem]
     
     //    var row0item: CheckListItem
@@ -51,6 +64,8 @@ class ChecklistViewController: UITableViewController,clickPerformCell {
     //   var arr : [String] = ["Apple","Mango","Banana","Papaya", "Guava", "Fig", "Avocado", "Cherry", "Blueberry" , "Blackberry", "Date","Peach", "Orange"]
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
         // Do any additional setup after loading the view.
     }
     
@@ -60,6 +75,17 @@ class ChecklistViewController: UITableViewController,clickPerformCell {
         
     }
     
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        // 1
+        
+        
+          items.remove(at: indexPath.row)
+        // 2
+          let indexPaths = [indexPath]
+          tableView.deleteRows(at: indexPaths, with: .automatic)
+        
+    }
     override func tableView(_ tableView: UITableView,
                             cellForRowAt indexPath: IndexPath) ->
         UITableViewCell {
