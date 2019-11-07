@@ -8,20 +8,37 @@
 
 import UIKit
 
-class ChecklistViewController: UITableViewController,clickPerformCell {
+class ChecklistViewController: UITableViewController,clickPerformCell,AddItemViewControllerDelegate {
     
-    @IBAction func addClick(_ sender: Any) {
-        
-        let newRowIndex = items.count
-         let item = CheckListItem()
-         item.text = "I am a new row"
-         item.checked = false
-         items.append(item)
-
-         let indexPath = IndexPath(row: newRowIndex, section: 0)
-         let indexPaths = [indexPath]
-         tableView.insertRows(at: indexPaths, with: .automatic)
+    func addItemViewControllerDidCancel( _ controller: AddNewItemController) {
+        navigationController?.popViewController(animated:true)
     }
+//    func addItemViewController(_controller: AddNewItemController,didFinishAdding item: CheckListItem) {
+//        navigationController?.popViewController(animated:true)
+//    }
+    
+//    @IBAction func addClick(_ sender: Any) {
+//
+//        let newRowIndex = items.count
+//        let item = CheckListItem()
+//        item.text = "I am a new row"
+//        item.checked = false
+//        items.append(item)
+//
+//        let indexPath = IndexPath(row: newRowIndex, section: 0)
+//        let indexPaths = [indexPath]
+//        tableView.insertRows(at: indexPaths, with: .automatic)
+//    }
+    
+    func addItemViewController(_ controller: AddNewItemController,didFinishAdding item: CheckListItem) {
+        let newRowIndex = items.count
+        items.append(item)
+        let indexPath = IndexPath(row: newRowIndex, section: 0)
+        let indexPaths = [indexPath]
+        tableView.insertRows(at: indexPaths, with: .automatic)
+        navigationController?.popViewController(animated:true)
+      }
+      
     
     var items: [CheckListItem]
     
@@ -31,7 +48,16 @@ class ChecklistViewController: UITableViewController,clickPerformCell {
     //    var row3item: CheckListItem
     //    var row4item: CheckListItem
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "AddItem" {
+            
+            let controller = segue.destination
+                as! AddNewItemController
+            controller.delegate = self
+        }}
     
+    
+  
     
     required init?(coder aDecoder: NSCoder) {
         
@@ -80,10 +106,10 @@ class ChecklistViewController: UITableViewController,clickPerformCell {
         // 1
         
         
-          items.remove(at: indexPath.row)
+        items.remove(at: indexPath.row)
         // 2
-          let indexPaths = [indexPath]
-          tableView.deleteRows(at: indexPaths, with: .automatic)
+        let indexPaths = [indexPath]
+        tableView.deleteRows(at: indexPaths, with: .automatic)
         
     }
     override func tableView(_ tableView: UITableView,

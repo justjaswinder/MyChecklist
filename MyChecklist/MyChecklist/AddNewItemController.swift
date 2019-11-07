@@ -8,10 +8,17 @@
 
 import UIKit
 
+
+protocol AddItemViewControllerDelegate: class {
+    
+    func addItemViewControllerDidCancel(_ controller: AddNewItemController)
+    func addItemViewController(_ controller: AddNewItemController,didFinishAdding item: CheckListItem)
+}
 class AddNewItemController: UITableViewController, UITextFieldDelegate {
     
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
     @IBOutlet weak var textField: UITextField!
+    var delegate: AddItemViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,13 +57,22 @@ class AddNewItemController: UITableViewController, UITextFieldDelegate {
         super.viewWillAppear(animated)
         textField.becomeFirstResponder()
     }
+//    @IBAction func cancel() {
+//        navigationController?.popViewController(animated: true)
+//    }
     @IBAction func cancel() {
-        navigationController?.popViewController(animated: true)
+      delegate?.addItemViewControllerDidCancel(self)
     }
     @IBAction func done() {
-        
-        navigationController?.popViewController(animated: true)
+      let item = CheckListItem()
+      item.text = textField.text!
+      item.checked = false
+      delegate?.addItemViewController(self, didFinishAdding: item)
     }
+//    @IBAction func done() {
+//
+//        navigationController?.popViewController(animated: true)
+//    }
     
     @IBAction func dismiss() {
         

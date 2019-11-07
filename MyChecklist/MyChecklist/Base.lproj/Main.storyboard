@@ -75,7 +75,7 @@
                     <navigationItem key="navigationItem" title="CheckList" id="OgN-nY-W54">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="uu5-6u-BnK">
                             <connections>
-                                <segue destination="dvb-fB-8bJ" kind="show" id="SQP-ZH-yDc"/>
+                                <segue destination="dvb-fB-8bJ" kind="show" identifier="AddItem" id="SQP-ZH-yDc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
